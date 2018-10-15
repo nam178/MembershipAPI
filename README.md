@@ -2,9 +2,9 @@
 
 To satisfy the requirements, the API was implemented with OAuth authentication, in which: 
 
-- Each tenant applications (The OAuth clients) is assigned with a **OAuth ID** and **OAuth Secret**.
-- Tenant applications can create new user by calling the endpoint `POST /api/register`, using the ID and Secret above to authenticate.
-- To make other API calls (update password, activate user, etc.) on the user's behalf, tenant applications must first request access token `GET /api/auth`, passing its ID and secret (using HTTP Basic Authentication) along with **username** and **password** (as query string) they collect from the user.
+- Each tenant application (The OAuth clients) is assigned with an **OAuth ID** and an **OAuth Secret**.
+- Tenant applications can create new user by calling `POST /api/register`, using the ID and Secret above to authenticate.
+- To make other API calls (update password, activate user, etc.) on the user's behalf, tenant applications must first request access token `GET /api/auth`, passing its ID and secret (using HTTP Basic Authentication) along with the **username** and **password** (as query string) they collect from the user.
 - The application should be deployed over HTTPS, however for the simplicy of this demo HTTP is used.
 
 # Build, run and test the API
@@ -43,7 +43,7 @@ Tenant Application 3 OAuth Secret: `l^W!Q$P!oCe%RX5R4k8Ejbk6DdW#wiIPSIGH*Uq*`
 
 
 ### Test step 1: Create account for Tenant Application 1
-Using the tenant application 1's ID and secret above, we create a new user for testing.
+Using the tenant application 1's ID and secret above, we create a new user for testing:
 ```
 curl -X POST \
   http://localhost:8080/api/register \
@@ -65,7 +65,7 @@ We now receive a token that can be used to make user-related requests
 
 ### Test step 3: Try changing my password
 
-Using the token received from previous step, we can change the password (for the user associated with that token)
+Using the token received from the previous step, we can change the password for the user associated with that token:
 
 ```
 curl -X PUT \
@@ -78,7 +78,7 @@ curl -X PUT \
 
 ### Test step 4: Try de-activating other users
 
-Because current user is admin of application 1, and it has accquired token under application 1, it can activate/deactivate any users (for application 1 only).
+Because the current user is the admin of application 1, and it has accquired token under application 1, it can activate/deactivate any users (for application 1 only):
 
 ```
 curl -X PUT \
