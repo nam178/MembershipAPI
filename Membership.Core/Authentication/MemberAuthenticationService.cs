@@ -45,7 +45,7 @@ namespace Membership.Core.Authentication
             if(false == TryGetToken(requestHeader, out errorMessage, out OAuthTokenEntry tokenEntry))
                 return false;
 
-            // Then get the user, to look up its client_id
+            // Then get the user, make sure it exists
             var user = _userRepository.FindUserByUserId(tokenEntry.UserId);
             if(null == user)
             {
