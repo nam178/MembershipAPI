@@ -44,6 +44,7 @@ Tenant Application 3 OAuth Secret: `l^W!Q$P!oCe%RX5R4k8Ejbk6DdW#wiIPSIGH*Uq*`
 
 ### Test step 1: Create account for Tenant Application 1
 Using the tenant application 1's ID and secret above, we create a new user for testing:
+
 ```
 curl -X POST \
   http://localhost:8080/api/register \
