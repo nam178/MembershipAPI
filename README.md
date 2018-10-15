@@ -3,8 +3,8 @@
 To satisfy the requirements, the API was implemented with OAuth authentication, in which: 
 
 - Each tenant applications (The OAuth clients) is assigned with a **OAuth ID** and **OAuth Secret**.
-- To make API calls (update password, activate user, etc.) on the user's behalf, first tenant applications must request access token `GET /api/auth`, passing its ID and secret (using HTTP Basic Authentication) along with **username** and **password** (as query string) they collect from the user.
-- Tenant applications can also create user by calling the endpoint `POST /api/member`
+- Tenant applications can create new user by calling the endpoint `POST /api/register`, using the ID and Secret above to authenticate.
+- To make other API calls (update password, activate user, etc.) on the user's behalf, tenant applications must first request access token `GET /api/auth`, passing its ID and secret (using HTTP Basic Authentication) along with **username** and **password** (as query string) they collect from the user.
 - The application should be deployed over HTTPS, however for the simplicy of this demo HTTP is used.
 
 # Build, run and test the API
